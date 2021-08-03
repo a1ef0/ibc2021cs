@@ -40,7 +40,6 @@ void pr(vector<int> vec){
 }
 
 void merge(vector<int> vec, int beg, int mid, int end){
-    // p q r
     int l1 = mid - beg + 1;
     int l2 = end - mid;
 
