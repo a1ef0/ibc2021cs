@@ -22,7 +22,15 @@ float avg(vector<int> arr){
     return (float) s/n;
 }
 
-
+vector<int> bubble_sort(vector<int> vec){
+    int n = vec.size();
+    for (int i = 0; i < n; ++i){
+        for (int j = 0; j < i; ++j){
+            if (vec[i] < vec[j]) swap(vec[i], vec[j]);
+        }
+    }
+    return vec;
+}
 
 
 int main(){
