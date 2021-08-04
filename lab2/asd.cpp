@@ -22,13 +22,14 @@ float avg(vector<int> arr){
     return (float) s/n;
 }
 
-void bubble_sort(vector<int> vec){
+vector<int> bubble_sort(vector<int> vec){
     int n = vec.size();
     for (int i = 0; i < n; ++i){
-        for (int j = 0; j < i; ++j){
-            if (vec[i] < vec[j]) swap(vec[i], vec[j]);
+        for (int j = 0; j < n - i - 1; ++j){
+            if (vec[j] > vec[j+1]) swap(vec[j], vec[j+1]);
         }
     }
+    return vec;
 }
 
 void pr(vector<int> vec){
@@ -81,14 +82,15 @@ void merge(vector<int> vec, int beg, int mid, int end){
     } 
 }
 
-void merge_sort(vector<int> vec, int beg, int end){
-    if (beg >= end) return;
-
+vector<int> merge_sort(vector<int> vec, int beg, int end){
+    if (beg < end){
     int mid = beg + (end - beg)/2;
 
     merge_sort(vec, beg, mid);
     merge_sort(vec, mid+1, end);
     merge(vec, beg, mid, end);
+    return vec;
+    }
 }
 
 int main(){
@@ -99,8 +101,8 @@ int main(){
         cin >> t;
         a[i] = t;
     }
-    //bubble_sort(a);
-    merge_sort(a, 0, n-1);
+    a = bubble_sort(a);
+    //a = merge_sort(a, 0, n-1);
     for (int i = 0; i < n; ++i){
         cout << a[i] << ' ';
     }
